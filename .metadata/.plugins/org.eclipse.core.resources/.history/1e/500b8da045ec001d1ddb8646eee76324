@@ -1,0 +1,18 @@
+package envio_email.envio_email;
+
+import java.util.Properties;
+
+import org.junit.Test;
+
+/**
+ * O Maven é um "gerenciador de projetos". Ele já contém alguns arquivos e confiurações pré-definidas
+ * Baixei o projeto maven para evitar baixar as dependências, como o pom.xml. No maven já vem pronto
+ */
+public class AppTest {
+	
+	@Test
+	public void testeEmail() {
+		Properties properties = new Properties();
+	}
+   
+}

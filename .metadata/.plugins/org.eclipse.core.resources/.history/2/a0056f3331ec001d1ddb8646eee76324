@@ -1,0 +1,10 @@
+package envio_email.envio_email;
+
+import org.junit.Test;
+
+/**
+ * Unit test for simple App.
+ */
+public class AppTest {
+   
+}

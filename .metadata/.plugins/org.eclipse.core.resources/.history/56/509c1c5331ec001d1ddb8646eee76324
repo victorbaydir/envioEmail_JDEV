@@ -1,0 +1,8 @@
+package envio_email.envio_email;
+
+/**
+ * Unit test for simple App.
+ */
+public class AppTest {
+   
+}

@@ -1,0 +1,17 @@
+package envio_email.envio_email;
+
+import java.util.Properties;
+
+import org.junit.Test;
+
+/**
+ * Unit test for simple App.
+ */
+public class AppTest {
+	
+	@Test
+	public void testeEmail() {
+		Properties properties = new Properties();
+	}
+   
+}
