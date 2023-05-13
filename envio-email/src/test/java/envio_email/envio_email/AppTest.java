@@ -2,9 +2,14 @@ package envio_email.envio_email;
 
 import java.util.Properties;
 
+import javax.mail.Address;
 import javax.mail.Authenticator;
+import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 import org.junit.Test;
 
@@ -24,7 +29,7 @@ public class AppTest {
 			 * para o envio dos emails.*/
 			Properties properties = new Properties();
 			properties.put("mail.smtp.auth", "true");
-			properties.put("mail.smtp.starttls", "true");
+			properties.put("mail.smtp.starttls.enable", "true");
 			properties.put("mail.smtp.host", "outlook.office365.com");
 			properties.put("mail.smtp.port", "587");
 			properties.put("mail.smtp.socketFactory.port", "587");
@@ -38,8 +43,20 @@ public class AppTest {
 					return new PasswordAuthentication(username, password);
 				}
 			});
-		
-			System.out.println(session);
+			
+			/*No método Adress colocamos o "endereço, ou seja, para onde o email será enviado*/
+			Address[] toUser = InternetAddress.parse("victorbaydir@hotmail.com");
+			
+			/*Tendo a sessão pronta, eu coloco uma mensagem que irá recebê-la*/
+			Message mensagem = new MimeMessage(session);
+			mensagem.setFrom(new InternetAddress(username));
+			mensagem.setRecipients(Message.RecipientType.TO, toUser);
+			mensagem.setSubject("TREINAMENTO JDEV TESTE");
+			mensagem.setText("Olá mundo");
+			
+			Transport.send(mensagem);
+			System.out.println("Email enviado!");
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
