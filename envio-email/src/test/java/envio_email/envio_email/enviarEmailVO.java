@@ -69,37 +69,8 @@ public class enviarEmailVO {
 			mensagem.setRecipients(Message.RecipientType.TO, toUser);
 			
 			
-			String line = "";
-			BufferedReader htmlBuffered = new BufferedReader(new FileReader("C:\\Users\\victo\\eclipse-workspace\\front\\html\\index.html"));
-			String htmlContent = "";
-			
-			while ((line = htmlBuffered.readLine()) != null) {
-				htmlContent += line;
-				
-			}
-			htmlBuffered.close();
-			
-			BufferedReader cssBuffered = new BufferedReader(new FileReader("C:\\Users\\victo\\eclipse-workspace\\front\\css\\styles.css"));
-			String cssContent = "";
-			
-			while ((line = cssBuffered.readLine()) != null) {
-				cssContent += line;
-				
-			}
-			cssBuffered.close();
-			
-			MimeBodyPart htmlBodyParty = new MimeBodyPart();
-			htmlBodyParty.setContent("<html><head><style>" + cssContent + "</style></head><body><div>" + htmlContent + "</div></body></html>", "text/html");
-
-//			MimeBodyPart cssBodyParty = new MimeBodyPart();
-//			cssBodyParty.setContent(cssContent, "text/css");
-			
-			MimeMultipart multiPart = new MimeMultipart();
-			multiPart.addBodyPart(htmlBodyParty);
-			
 			mensagem.setSubject(assunto);
-			mensagem.setText(texto);
-			mensagem.setContent(multiPart);
+			mensagem.setContent(texto, "text/html; charset=utf-8");
 			
 			Transport.send(mensagem);
 			System.out.println("Email enviado!");
